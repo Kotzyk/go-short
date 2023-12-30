@@ -2,6 +2,7 @@ package db
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"strconv"
 	"time"
@@ -30,8 +31,8 @@ var Ctx = context.Background()
 
 func CreateClient(dbInt int) *redis.Client {
 	rdb := redis.NewClient(&redis.Options{
-		Addr:     os.Getenv("DB_ADDR"),
-		Password: os.Getenv("DB_PASS"),
+		Addr:     fmt.Sprintf("%s:%s", os.Getenv("REDIS_HOST"), os.Getenv("REDIS_PORT")),
+		Password: os.Getenv("REDIS_PASSWORD"),
 		DB:       dbInt,
 	})
 
