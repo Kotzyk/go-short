@@ -20,6 +20,6 @@ func main() {
 	rt.SetUrlsRouter(server)
 	// Start HTTP server
 	port := os.Getenv("PORT")
-	fmt.Printf("Port read as: %s\n", port)
-	server.Run(fmt.Sprintf(":%s", port))
+
+	server.Run(fmt.Sprintf("0.0.0.0:%s", port))
 }
