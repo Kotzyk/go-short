@@ -9,7 +9,7 @@ type ShortenRequest struct {
 }
 
 type ShortenResponse struct {
-	URL         string        `json:"url"`
-	CustomShort string        `json:"short"`
-	Expiry      time.Duration `json:"expiry"`
+	URL    string        `json:"url"`
+	Short  string        `json:"short"`
+	Expiry time.Duration `json:"expiry"`
 }

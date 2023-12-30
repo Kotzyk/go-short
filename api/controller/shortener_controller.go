@@ -67,9 +67,9 @@ func ShortenUrl(c *gin.Context) {
 	}
 
 	response := model.ShortenResponse{
-		URL:         request.URL,
-		CustomShort: id,
-		Expiry:      request.Expiry,
+		URL:    request.URL,
+		Short:  id,
+		Expiry: request.Expiry,
 	}
 
 	c.JSON(http.StatusOK, response)
