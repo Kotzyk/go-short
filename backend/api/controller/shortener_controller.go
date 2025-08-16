@@ -24,14 +24,13 @@ func ShortenUrl(c *gin.Context) {
 
 	validate = validator.New(validator.WithRequiredStructEnabled())
 
-	rc := db.CreateClient(0)
-	defer rc.Close()
-	//make sure the request body is parsable to desired JSON at all
-	c.ShouldBindJSON(&request)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
+        rc := db.CreateClient(0)
+        defer rc.Close()
+        // make sure the request body is parsable to desired JSON at all
+        if err = c.ShouldBindJSON(&request); err != nil {
+                c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+                return
+        }
 	// make sure the JSON fits the other rules described in the model
 	err = validate.Struct(request)
 	if err != nil {
